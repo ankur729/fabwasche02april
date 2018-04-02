@@ -1,0 +1,68 @@
+
+
+<div class="main_container">
+
+	
+	<div class="page_404" *ngIf="no_service_popup">
+		<div class="design_box">
+			<span class="close_popup"  (click)="onCloseNoServicePopup()"><i><img src="assets/images/icon/close.png"></i></span>
+			
+			<div class="page_name" >
+				<span class="title"> No Service Available In Your Area</span>
+				<span class="caption">We’re working towards creating something better. We won’t be long.</span>
+			</div>
+
+			<span class="not_found"><img src="assets/images/assets/404.jpg"></span>
+
+			<a href="#0" class="button">Get in touch</a>
+
+		</div>
+	</div>
+
+
+		<!-- location header start here-->
+		<div class="location_header" *ngIf="upper_panel">
+			
+			<div class="location_design">
+				<div class="container">
+						<marquee style="display:none">Auto Location Detect feature will work only in HTTPS Server..</marquee>
+					<span class="logo">
+					 
+						<img src="{{imgUrl}}{{globaldata?.data.logo_image}}">
+						<h4 class="caption" (click)="serviceTest()" >{{globaldata?.data.punch_line}}
+								{{data | json}}
+						</h4>
+					
+					</span>
+					<div class="location_div">
+						<div class="search_div">
+							<input type="text" id="search" name="" placeholder="Type your address (e.g G 11 preet vihar)" class="search_bar"  #search>
+							<!-- <input type="text" placeholder="Search for Location" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search> -->
+						</div>
+						<div class="cl_div cursor_pointer" (click)="autoDetectLocation()"><span class="button">Detect</span></div>
+					</div>
+					<div class="latest_location">
+						<h4 class="title">Or select your city</h4>
+						<!-- <a [routerLink]="['payusend']">Home</a> -->
+						<ul class="choose_location">
+							<li class="list cursor_pointer" *ngFor="let city of globaldata?.data.citylist">
+								<a (click)="onClickLocation(city.city_name)" class="link"><div class="box"><span class="icon"><img src="assets/images/icon/location/delhi.png"></span><span class="name">{{city.city_name}}</span></div></a>
+							</li>	
+							 
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+		<!-- location header end here-->
+	
+	
+	</div>
+	 
+	<router-outlet></router-outlet>
+	
+	 <app-location-listing *ngIf="service_component"   (onSwitchLocation)="onSwitchLocationHandler($event)" ></app-location-listing>
+	
+	

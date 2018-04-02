@@ -1,0 +1,27 @@
+.service_date_stot .selector_date{
+
+    max-width: 450px;
+}
+.cursor_pointer{
+
+    cursor: pointer;
+}
+.owl-nav disabled{
+    
+      display: none;
+     
+  }
+
+.err_login_display{
+
+    color:red;
+}
+
+/* LINE NO 396 below .services_popup .service_date_stot .day_slider .calender.active {opacity: 1;}
+
+.services_popup .service_date_stot  owl-carousel {float: left; width: 100%;}
+.services_popup .service_date_stot  .owl-carousel .owl-stage-outer {float: left; width: 100%;}
+.services_popup .service_date_stot .row {margin: 0px;}
+.services_popup .service_date_stot .owl-carousel .owl-nav.disabled, .owl-carousel .owl-dots.disabled {position: absolute; top: -50px;margin-top: 0px; right: 20px; }
+
+*/

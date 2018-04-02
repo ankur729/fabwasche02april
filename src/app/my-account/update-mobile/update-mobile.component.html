@@ -1,0 +1,57 @@
+<div class="update_profile_popup">
+  <div class="design_box">
+      <span class="close_popup"(click)="onClose()"><i><img src="assets/images/icon/close.png"></i></span>
+      
+      <div class="set_design">
+      <!-- left part start here -->
+      <div class="left_part">
+        <div class="style_set">
+          <h2 class="heading"><span class="number">Update Profile</span></h2>
+        
+          <div class="data_setting">
+         
+            <div class="overdata_setting">
+              <div class="service_address">
+                  <span class="err_login" *ngIf="err_login">
+                      {{err_msg_login}}
+                      <!-- verification link will be sent on your email -->
+                    </span>
+                <section class="content" id="login_form">
+               
+                  <div class="trigger_alert">
+                    <span class="title">An OTP will be sent on</span> 
+                    <span class="value">+91 - {{hiddenMobile}}</span>
+                  </div>
+
+                  <span class="input input--nao margin-bottom-20px">
+                    <a  style="cursor:pointer" (click)="resendOTP()" class="resend_btn">Resend</a>
+                    <input class="input__field input__field--nao" type="text" id="input-1" value="" [(ngModel)]="user_entered_otp" />
+                    <label class="input__label input__label--nao" for="input-1">
+                      <span class="input__label-content input__label-content--nao">Enter OTP</span>
+                    </label>
+                    <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                      <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+                    </svg>
+                  </span>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div class="bottom_buttons">
+            <button class="blue_button left" (click)="onUpdateProfileClick()">Update</button>
+          </div>
+        </div>
+      </div>
+      <!-- left part end here -->
+
+      <!-- right part start here -->
+      <div class="right_part">
+        <div class="style_set">
+          <img src="assets/images/assets/update_profile.png">
+        </div>
+      </div>
+      <!-- right part end here -->
+    </div>
+
+  </div>
+</div>

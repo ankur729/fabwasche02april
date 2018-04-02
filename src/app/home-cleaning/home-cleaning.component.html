@@ -1,0 +1,616 @@
+	<!-- all_catpopup start here -->
+	<div class="services_popup">
+      <div class="design_box">	
+        
+          <span class="close_popup" (click)="closeLoginRegisterPopup()"><i><img src="assets/images/icon/close.png"></i></span>
+
+        <!-- STEP-1 -->
+
+        <div class="services_design homedeep_style" *ngIf="steps=='1'">
+          <!-- left part start here -->
+          <div class="left_part">
+            <div class="style_set">
+              <h2 class="heading">Let's get started...</h2>
+              <div class="data_setting">
+                <div class="overdata_setting">
+
+                    <div [innerHTML]="homeCleaning.step_1?.data.meta_value"></div>
+                  
+                <!-- <b>Our Promise</b><br><br>
+  
+  Free pickup and delivery on all orders over Rs.349.
+  Customer Protection of upto Rs. 10000 against damages
+  Delivery between 3-4 days from pick up <br> <br><br>
+  
+  
+  <b>Pricing</b><br><br>
+  
+  Fixed prices for every item
+  Minimum booking amount - Rs.349
+  Final amount may vary on the basis of the fabric for fancy garments like saree, ladies suites, lehenga, salwar kameez, gown, etc.
+  Starting Rs. 59 -->
+                </div>
+              </div>
+              <div class="bottom_buttons">
+                  <button class="black_button left back" (click)="onBack('1')">Go Back</button>
+                  <button class="blue_button right next" (click)="onNext('1')">Next</button>
+              </div>
+            </div>
+          </div>
+          <!-- left part end here -->
+          <div class="right_part">
+            <div class="style_set"  [ngStyle]="{ 'background-image': 'url('+imgUrl_raw+homeCleaningImg+')' , 'background-position': 'center center' }" >
+              <div class="section_heading">
+                <h2 class="heading">Home Deep Cleaning</h2>
+              </div>
+  
+              <div class="bottom_meter">
+                <div class="question_steps_head">
+                  <span class="progress"><i class="bar" style="width: 11%;"></i></span>
+                  <span class="process">You are in step - 1</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- STEP-2 -->
+        <div class="services_design homedeep_style" *ngIf="steps=='2'">
+            <!-- left part start here -->
+            <div class="left_part">
+                <div class="style_set">
+                <h2 class="heading">Let's get started...</h2>
+                <div class="data_setting">
+                  <div class="overdata_setting">
+                      <span class="err_login_display" *ngIf="err_login" style="color:red;font-size:13px;">
+                          {{err_msg_login}}
+                          <!-- verification link will be sent on your email -->
+                        </span>
+                      <ul class="area_select">
+                        <li class="list" *ngFor="let category of categories">
+                          <input id="{{category.category_name}}" (click)="updateCategoryId(category.id)" name="category_id" value="{{category.category_name}}" class="fancy-radio" type="radio">
+                          <label for="{{category.category_name}}" class="fancy-radio-label">{{category.category_name}}</label>
+                        </li>
+                        <!-- <li class="list">
+                          <input id="check2" name="check" value="check1" class="fancy-radio" type="radio">
+                          <label for="check2" class="fancy-radio-label">2 BHK Apartment</label>
+                        </li>
+                        <li class="list">
+                          <input id="check3" name="check" value="check1" class="fancy-radio" type="radio">
+                          <label for="check3" class="fancy-radio-label">3 BHK Apartment</label>
+                        </li>
+                        <li class="list">
+                          <input id="check4" name="check" value="check1" class="fancy-radio" type="radio">
+                          <label for="check4" class="fancy-radio-label">4 BHK Apartment</label>
+                        </li>
+                        <li class="list">
+                          <input id="check5" name="check" value="check1" class="fancy-radio" type="radio">
+                          <label for="check5" class="fancy-radio-label">5 BHK Apartment</label>
+                        </li> -->
+                      </ul>
+    
+                  </div>
+                </div>
+                <div class="bottom_buttons">
+                    <button class="black_button left back" (click)="onBack('2')">Go Back</button>
+						      	<button class="blue_button right next" (click)="onNext('2')">Next</button>
+                </div>
+              </div>
+            </div>
+            <!-- left part end here -->
+            <div class="right_part">
+                <div class="style_set"  [ngStyle]="{ 'background-image': 'url('+imgUrl_raw+homeCleaningImg+')' , 'background-position': 'center center' }" >
+                <div class="section_heading">
+                  <h2 class="heading">{{service_name}}</h2>
+                </div>
+    
+                <div class="bottom_meter">
+                  <div class="question_steps_head">
+                    <span class="progress"><i class="bar" style="width: 12.5%;"></i></span>
+                    <span class="process">You are in step - 1</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- STEP-3 -->
+
+          <div class="services_design homedeep_style" *ngIf="steps=='3'">
+            <!-- left part start here -->
+            <div class="left_part">
+              <div class="style_set">
+                  <span class="err_login_display" *ngIf="err_login" style="color:red;font-size:13px;">
+                      {{err_msg_login}}
+                      <!-- verification link will be sent on your email -->
+                    </span>
+                <h2 class="heading">Please select the size of your home</h2>
+               
+                <div class="data_setting">
+                  <div class="overdata_setting">
+                    <ul class="product_listing">
+                      <li class="list"  *ngFor="let package of homeCleaningCart.cart_info" >
+                        <div class="product_head">
+                          <div class="left_head">
+                            <span class="name">{{package.package_name}}</span>
+                            <div class="price_div">
+                              <span class="new_price">{{package.price}} INR</span>
+                              <span class="red_text">{{package.before_discount_price}} INR</span>
+                              <span class="green_text">Save {{package.discount_per}}%</span>
+                            </div>
+                            <div class="text" style="display:none">{{package.description}}<a href="#0" class="more_text">[...]</a></div>
+                          </div>
+                          <div class="right_qty">
+                              
+                              <div class="number-style">
+                                <span class="number-minus" (click)="updateCart(package.item_id,'decrease')"  ></span>
+                              <span style="color: #535a5a;margin-right: 5px;">  {{package.item_qty}}</span>
+                                <span class="number-plus" (click)="updateCart(package.item_id,'increase')"></span></div>
+                              
+                            <!-- <input type="number" value="1" step="1" min="0" max="10" class="qty_controller"> -->
+                          </div>
+                        </div>
+                      </li>
+                      <!-- <li class="list">
+                        <div class="product_head">
+                          <div class="left_head">
+                            <span class="name">Room Cleaning</span>
+                            <div class="price_div">
+                              <span class="new_price">849.00 INR</span>
+                            </div>
+                            <div class="text">Deep cleaning of floors, Dry vacuuming of walls and ceilings. <a href="#0" class="more_text">[...]</a></div>
+                          </div>
+                          <div class="right_qty">sdfd</div>
+                        </div>
+                      </li> -->
+                    </ul>
+                  </div>
+                </div>
+                <div class="bottom_buttons">
+                  <button class="black_button left back" (click)="onBack('3')">Go Back</button>
+                  <button class="blue_button right next" (click)="onNext('3')">Next</button>
+                </div>
+              </div>
+            </div>
+            <!-- left part end here -->
+            <div class="right_part">
+                <div class="style_set"  [ngStyle]="{ 'background-image': 'url('+imgUrl_raw+homeCleaningImg+')' , 'background-position': 'center center' }" >
+                <div class="section_heading">
+                    <h2 class="heading">{{service_name}}</h2>
+                </div>
+    
+                <div class="bottom_meter">
+                  <div class="question_steps_head">
+                    <span class="progress"><i class="bar" style="width: 25%;"></i></span>
+                    <span class="process">You are in step - 2</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- STEP-4 -->
+
+          <div class="services_design homedeep_style" *ngIf="steps=='4'">
+            <!-- left part start here -->
+            <div class="left_part">
+              <div class="style_set">
+                <h2 class="heading"><span class="number"><span class="num">{{addedInCart.length}}</span></span> Items in your cart <span class="price">{{homeCleaningCart.cart_total}}.00 INR</span></h2>
+                <div class="data_setting">
+                  <div class="overdata_setting">
+                    <ul class="product_listing">
+                      
+                        <li class="list" *ngFor="let package of homeCleaningCart.cart_info">
+
+                            <div class="product_head" *ngIf="package.is_added=='true'">
+                              <div class="left_head">
+                                <span class="name">{{package.package_name}}</span>
+                                <div class="price_div">
+                                  <span class="new_price">{{package.price}}.00 INR</span>
+                                  <span class="red_text">{{package.price}}.00 INR</span>
+                                  <span class="green_text">Save {{package.discount_per}}%</span>
+                                </div>
+                                <div class="text" style="display:none">{{package.description}}<a href="#0" class="more_text">[...]</a></div>
+                              </div>
+                              <div class="right_qty">
+                                  
+                                  <div class="number-style">
+                                    <span class="number-minus" (click)="updateCart(package.item_id,'decrease')"  ></span>
+                                  <span style="color: #535a5a;margin-right: 5px;">  {{package.item_qty}}</span>
+                                    <span class="number-plus" (click)="updateCart(package.item_id,'increase')"></span></div>
+                                  
+                                <!-- <input type="number" value="1" step="1" min="0" max="10" class="qty_controller"> -->
+                              </div>
+                            </div>
+                          </li>
+
+                    </ul>
+                  </div>
+                </div>
+                <div class="bottom_buttons">
+                  <button class="black_button left back" (click)="onBack('4')">Go Back</button>
+                  <button class="blue_button right next" (click)="onNext('4')">Next</button>
+                </div>
+              </div>
+            </div>
+            <!-- left part end here -->
+            <div class="right_part">
+                <div class="style_set"  [ngStyle]="{ 'background-image': 'url('+imgUrl_raw+homeCleaningImg+')' , 'background-position': 'center center' }" >
+                <div class="section_heading">
+                    <h2 class="heading">{{service_name}}</h2>
+                </div>
+    
+                <div class="bottom_meter">
+                  <div class="question_steps_head">
+                    <span class="progress"><i class="bar" style="width: 37.5%;"></i></span>
+                    <span class="process">You are in step - 3</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+
+          <!-- STEP-5 -->
+
+          <div class="services_design homedeep_style" id="locationView">
+            
+            <!-- left part start here -->
+            <div class="left_part">
+              <div class="style_set">
+                <h2 class="heading"><span class="number"></span>Where do you require the service?</h2>
+                <div class="data_setting">
+                  <div class="overdata_setting">
+                    <div class="service_address">
+                      <section class="content" id="login_form">
+                          <span class="err_login_display" *ngIf="err_login" style="color:red;font-size:13px;">
+                              {{err_msg_login}}
+                              <!-- verification link will be sent on your email -->
+                            </span>
+                        <p style="color:red;    font-size: 13px;" *ngIf="isUnservicable">* Currently Unservicable in your area, but it will be soon.!</p>
+                        <span class="input input--nao">
+                          <input class="input__field input__field--nao" type="text" value=""  id="house_no"  />
+                          <label class="input__label input__label--nao" for="input-1">
+                            <span class="input__label-content input__label-content--nao">House/Flat No.</span>
+                          </label>
+                          <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                            <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+                          </svg>
+                        </span>
+                        <span class="input input--nao">
+                          <a (click)="autoDetectLocation()" class="location_detect cursor_pointer">Detect</a>
+                          <input id="search" class="input__field input__field--nao" type="text" placeholder=""  #search />
+                          
+                          <label class="input__label input__label--nao" for="input-2">
+                            <span class="input__label-content input__label-content--nao">Enter Location</span>
+                          </label>
+                          <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                            <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+                          </svg>
+                        </span>
+                        <span class="input input--nao">
+                          <input class="input__field input__field--nao" type="text" id="landmark"  />
+                          <label class="input__label input__label--nao" for="input-3">
+                            <span class="input__label-content input__label-content--nao">Landmark</span>
+                          </label>
+                          <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+                            <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+                          </svg>
+                        </span>
+                          <span class="caption">E.g. 1102 Sushant Lok, Sector 23, Gurugram</span>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+                <div class="bottom_buttons">
+                  <button class="black_button left back" (click)="onBack('5')">Go Back</button>
+                  <button class="blue_button right next" (click)="onNext('5')" id="addrNextBtn">Next</button>
+                </div>
+              </div>
+            </div>
+            <!-- left part end here -->
+            <div class="right_part">
+                <div class="style_set"  [ngStyle]="{ 'background-image': 'url('+imgUrl_raw+homeCleaningImg+')' , 'background-position': 'center center' }" >
+                <div class="section_heading">
+                    <h2 class="heading">{{service_name}}</h2>
+                </div>
+    
+                <div class="bottom_meter">
+                  <div class="question_steps_head">
+                    <span class="progress"><i class="bar" style="width: 50%;"></i></span>
+                    <span class="process">You are in step - 4</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP-6 -->
+          
+			<div class="services_design homedeep_style" *ngIf="steps=='6'">
+
+       
+				<!-- left part start here -->
+				<div class="left_part">
+					<div class="style_set">
+						<h2 class="heading">When do you require the service?</h2>
+						<div class="data_setting">
+							<div class="overdata_setting">
+								<div class="service_date_stot"  >
+                  <span class="err_login_display" *ngIf="err_login" style="color:red;font-size:14px;">
+                          {{err_msg_login}}
+                          <!-- verification link will be sent on your email -->
+                        </span>
+									<div class="selector_date">
+										<h4 class="title">Select date of service</h4>
+										<div class="row">
+											<ul class="day_slider">
+
+                   
+                        
+                          <owl-carousel
+                          [options]="{items: 3, dots: true, navigation: false}"
+                         
+                         
+                         
+                          [carouselClasses]="['owl-theme', 'row', 'sliding']"
+                          
+                            >
+                       
+                          <li class="list" *ngFor="let day of time_solts.slotarr ">
+                              <div class="calender"  id="{{day.weekday}}" (click)="selectDaySlot(day)">
+                                <span class="day">{{day.weekday | slice:0:3}}</span>
+                                <span class="number">{{day.day}}</span>
+                              </div>
+                            </li>
+                     
+                      </owl-carousel>
+											
+							 
+											</ul>
+										</div>
+									</div>
+									<div class="selector_date">
+										<h4 class="title">Select Time Slot</h4>
+										<ul class="time_slider">
+
+                        <owl-carousel
+                        [options]="{items: 3, dots: true, navigation: false}"
+                       
+                       
+                       
+                        [carouselClasses]="['owl-theme', 'row', 'sliding']"
+                       
+                          >
+                     
+                          <li class="list" *ngFor="let time of time_solts.timearr ">
+                              <div class="timer" id="{{time.id}}" (click)="selectTimeSlot(time)">
+                                <span class="start">{{time.time_from}} </span>
+                                <span class="end">{{time.time_to}}</span>
+                              </div>
+                            </li>
+            
+                    </owl-carousel>
+										 
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="bottom_buttons">
+              <button class="black_button left back" (click)="onBack('6')">Go Back</button>
+              <button class="blue_button right next" (click)="onNext('6')">Next</button>
+						</div>
+					</div>
+				</div>
+				<!-- left part end here -->
+				<div class="right_part">
+            <div class="style_set"  [ngStyle]="{ 'background-image': 'url('+imgUrl_raw+homeCleaningImg+')' , 'background-position': 'center center' }" >
+						<div class="section_heading">
+                <h2 class="heading">{{service_name}}</h2>
+						</div>
+
+						<div class="bottom_meter">
+							<div class="question_steps_head">
+								<span class="progress"><i class="bar" style="width: 62.5%;"></i></span>
+								<span class="process">You are in step - 5</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+      <!-- STEP-7 -->
+
+      
+			<div class="services_design homedeep_style " *ngIf="steps=='7'">
+				<!-- left part start here -->
+				<div class="left_part">
+					<div class="style_set">
+						<h2 class="heading">Verification Login</h2>
+						<div class="data_setting">
+							<div class="overdata_setting">
+								<div class="service_address">
+									<section class="content" id="check_form">
+
+                      <span class="err_login_display" *ngIf="err_login" style="color:red;font-size:14px;">
+                          {{err_msg_login}}
+                          <!-- verification link will be sent on your email -->
+                        </span>
+										<span class="input input--nao">
+											<input class="input__field input__field--nao" type="text" id="email_ver" value="{{loggedInEmail}}"  />
+											<label class="input__label input__label--nao" for="input-1">
+												<span class="input__label-content input__label-content--nao">Email (optional)</span>
+											</label>
+											<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+												<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+											</svg>
+										</span>
+										<span class="input input--nao">
+											<input class="input__field input__field--nao" type="text" id="mobile_ver" value="{{global.user_data?.mobile}}" [attr.maxlength]="10"/>
+											<label class="input__label input__label--nao" for="input-3">
+												<span class="input__label-content input__label-content--nao">Mobile</span>
+											</label>
+											<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+												<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+											</svg>
+										</span>
+									</section>
+								</div>
+							</div>
+						</div>
+						<div class="bottom_buttons">
+              <button class="black_button left back" (click)="onBack('7')">Go Back</button>
+              <button class="blue_button right next" (click)="onNext('7')">Next</button>
+						</div>
+					</div>
+				</div>
+				<!-- left part end here -->
+				<div class="right_part">
+            <div class="style_set"  [ngStyle]="{ 'background-image': 'url('+imgUrl_raw+homeCleaningImg+')' , 'background-position': 'center center' }" >
+						<div class="section_heading">
+                <h2 class="heading">{{service_name}}</h2>
+						</div>
+
+						<div class="bottom_meter">
+							<div class="question_steps_head">
+								<span class="progress"><i class="bar" style="width: 75%;"></i></span>
+								<span class="process">You are in step - 6</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+      <!-- STEP-8 -->
+
+      
+			<div class="services_design homedeep_style " *ngIf="steps=='8'">
+				<!-- left part start here -->
+				<div class="left_part">
+					<div class="style_set">
+						<h2 class="heading">Verification Login</h2>
+						<div class="data_setting">
+							<div class="overdata_setting">
+								<div class="service_address validate_number">
+									
+									<div class="trigger_alert">
+									<span class="title">An OTP will be sent on</span> 
+									<span class="value">+91 - {{global.user_data?.hidden_mobile}}</span>
+								</div>
+								<section class="content" id="login_form">
+
+                    <span class="err_login_display" *ngIf="err_login" style="color:red;font-size:14px;">
+                        {{err_msg_login}}
+                        <!-- verification link will be sent on your email -->
+                      </span>
+									<span class="input input--nao">
+									<a style="cursor:pointer" (click)="resendOTP()" class="resend_btn">Resend</a>
+										<input class="input__field input__field--nao" type="text" id="otp_ver" />
+										<label class="input__label input__label--nao" for="input-1">
+											<span class="input__label-content input__label-content--nao">Enter OTP Code</span>
+										</label>
+										<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+											<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+										</svg>
+									</span>
+								</section>
+
+
+								</div>
+							</div>
+						</div>
+						<div class="bottom_buttons">
+              <button class="black_button left back" (click)="onBack('8')">Go Back</button>
+              <button class="blue_button right next" (click)="onNext('8')">Next</button>
+						</div>
+					</div>
+				</div>
+				<!-- left part end here -->
+				<div class="right_part">
+            <div class="style_set"  [ngStyle]="{ 'background-image': 'url('+imgUrl_raw+homeCleaningImg+')' , 'background-position': 'center center' }" >
+						<div class="section_heading">
+							  <h2 class="heading">{{service_name}}</h2>
+						</div>
+
+						<div class="bottom_meter">
+							<div class="question_steps_head">
+								<span class="progress"><i class="bar" style="width: 87.5%;"></i></span>
+								<span class="process">You are in step - 7</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+      <!-- STEP-9 -->
+
+      <div class="services_design homedeep_style " *ngIf="steps=='9'">
+				<!-- left part start here -->
+				<div class="left_part">
+					<div class="style_set">
+            <h2 class="heading">Proceed to Checkout</h2>
+        
+						<div class="data_setting">
+                <span class="err_login_display" *ngIf="err_login" style="color:red;font-size:14px;">
+                    {{err_msg_login}}
+                    <!-- verification link will be sent on your email -->
+                  </span>
+							<div class="overdata_setting">
+								<div class="checkout_page">
+                  Select Payment Method
+                 
+									<ul class="payment_mode_select">
+										<li class="list">
+											<label class="choose_btn" id="online_btn"  (click)="selectPaymentMode('online')"> <img src="assets/images/icon/pay_1.png"> </label>
+											<span class="name">Online</span>
+										</li>
+										<li class="list" (click)="selectPaymentMode('cod')">
+											<label class="choose_btn" id="cod_btn"> <img src="assets/images/icon/pay_2.png"> </label>
+											<span class="name">Cash</span>
+										</li>
+										<li class="list" (click)="selectPaymentMode('wallet')">
+											<label class="choose_btn" id="wallet_btn"> <img src="assets/images/icon/pay_3.png"> </label>
+											<span class="name">Wallet Points</span>
+										</li> 
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="bottom_buttons">
+
+                <button class="black_button left back" (click)="onBack('9')">Go Back</button>
+                <button class="blue_button right next" (click)="onNext('9')" id="payment_btn">make Payment {{homeCleaningCart.cart_total}} INR</button>
+						 
+						</div>
+					</div>
+				</div>
+				<!-- left part end here -->
+				<div class="right_part">
+            <div class="style_set"  [ngStyle]="{ 'background-image': 'url('+imgUrl_raw+homeCleaningImg+')' , 'background-position': 'center center' }" >
+						<div class="section_heading">
+                <h2 class="heading">{{service_name}}</h2>
+						</div>
+
+						<div class="bottom_meter">
+							<div class="question_steps_head">
+								<span class="progress"><i class="bar" style="width: 100%;"></i></span>
+								<span class="process">You are in final step - 8</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+      </div>
+    </div>
+    <!-- all_catpopup end here -->
+
+<app-login [called_from_service]="called_from_service" (UserData)="UserDataHandler($event)" (LoginCloseEvent)="LoginCloseEventHandler($event)"></app-login>
+<app-payu *ngIf="is_payu_call" [is_payu_call]="is_payu_call"></app-payu>

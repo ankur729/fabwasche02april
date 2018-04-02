@@ -1,0 +1,268 @@
+
+
+<div class="main_container">
+<!-- header start here -->
+<div class="header">
+
+  <div class="container">
+	   
+			<div class="head_design">
+				<div class="coloum_div col-px-200"  routerLink="/" (click)="toggleLocation()"><span class="location">{{location}}<i class="icon"><img src="assets/images/icon/reload.png"></i></span></div>
+				<div class="coloum_div"><span class="logo"><img src="assets/images/logo.png"></span></div>
+				<div class="coloum_div col-px-200" *ngIf="is_logged_in==false" ><span class="login_button" (click)="onLoginRegisterClick()">Login / Register</span></div>
+				<div class="coloum_div col-px-200" *ngIf="is_logged_in">
+					<div class="my_account_drop">
+						<span class="drop_name">Hi, {{loggedInUserData?.name}}</span>
+						<ul class="drop-down">
+							<li class="sub-list"   routerLink="/my-account/orders" style="cursor:pointer"><a  class="sub-link">My Order</a></li>
+							<li class="sub-list"><a   routerLink="/my-account/" class="sub-link">My Referral</a></li>
+							<li class="sub-list" ><a href="#" (click)="logout()" class="sub-link">Logout</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<!-- header end here -->
+
+	<!-- cat_section start here -->
+	<div class="cat_section">
+		<div class="container">
+	
+			<div class="left_out_margin">	
+				<div class="usp_steps">
+					<ul class="steps">
+						 
+						<li class="list" *ngFor="let homecleaning of globaldata?.data.homeservicescontent">
+							<span class="icon"> <i class="thumb"><img src="{{imgUrl_thumb}}{{homecleaning.logo}}"></i> </span>
+							<div class="data">
+								<span class="title">{{homecleaning.title}}</span>
+								
+								<span class="caption">{{homecleaning.caption}}</span>
+							</div>
+						</li>
+					 
+					</ul>
+					<ul class="services">
+						<li class="list" style="cursor:pointer" *ngFor="let service of services_arr">
+							
+							<a   (click)="onServiceClick(service.id,service.web_banner,service.service_name)"   class="link"><span class="name">{{service.service_name}}</span>
+								<img src="{{imgUrl_thumb}}{{service?.service_image}}">
+							</a>
+						</li>
+						<!-- <li class="list" (click)="onServiceClick('1002')" style="cursor:pointer"><a  class="link"><span class="name">Dry Cleaning</span><img src="assets/images/assets/dry_clean.jpg"></a></li>
+						<li class="list"><a href="#0" class="link"><span class="name">Fabric washing</span><img src="assets/images/assets/fab_clean.jpg"></a></li>
+						<li class="list" (click)="onServiceClick('1005')" style="cursor:pointer"><a  class="link"><span class="name">Home Deep Cleaning</span><img src="assets/images/assets/home_clean.jpg"></a></li>
+						<li class="list"><a href="#0" class="link"><span class="name">Water Tank Cleaning</span><img src="assets/images/assets/water_tank.jpg"></a></li>
+						<li class="list"><a href="#0" class="link"><span class="name">Sofa Cleaning</span><img src="assets/images/assets/sofa_clean.jpg"></a></li>
+						<li class="list" ><a  class="link"><span class="name">Bathroom deep Cleaning</span><img src="assets/images/assets/bathroom_clean.jpg"></a></li>
+						<li class="list"><a href="#0" class="link view_all"> <span class="">View all</span></a></li> -->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- cat_section end here -->
+
+	<div class="container">
+		<div class="grey_set_bg">
+			<div class="our_capaciies">
+				<h2 class="heading"  (click)="payuMethod()">{{globaldata?.data.our_capabilities.page_title}}</h2>
+				<div [innerHTML]="globaldata?.data.our_capabilities.page_content"></div>	 
+			</div>
+
+			<div class="right_out_margin">
+				<div class="customer_reviews">
+					<div class="left_section">
+						<ul class="review_slider">
+							    
+								<owl-carousel
+								[options]="{items:1, dots: true, navigation: false,autoPlay:1000}"
+							   
+							   
+							   
+								[carouselClasses]="['owl-theme', 'row', 'sliding']"
+								
+								  >
+							 
+								  <li class="list">
+										<div class="main_data">
+											<div class="starshape">
+												<span class="icon">4.3</span>
+											</div>
+											<div class="data">
+												<span class="name" id="sfasad">Sajald Kapoor</span>
+												<span class="post">Wedding Photographer</span>
+											</div>
+										</div>
+										<p>From earning 10K a month to being totally booked from November till February.</p>
+									</li>
+
+
+							<li class="list">
+									<div class="main_data">
+										<div class="starshape">
+											<span class="icon">4.4</span>
+										</div>
+										<div class="data">
+											<span class="name">Sajal Kapoor</span>
+											<span class="post">Wedding Photographer</span>
+										</div>
+									</div>
+									<p>From earning 10K a month to being totally booked from November till February.</p>
+								</li>
+						   
+							</owl-carousel>
+												  
+						
+							<!-- <li class="list">
+								<div class="main_data">
+									<div class="starshape">
+										<span class="icon">4.3</span>
+									</div>
+									<div class="data">
+										<span class="name">Sajal Kapoor</span>
+										<span class="post">Wedding Photographer</span>
+									</div>
+								</div>
+								<p>From earning 10K a month to being totally booked from November till February.</p>
+							</li>
+							<li class="list">
+								<div class="main_data">
+									<div class="starshape">
+										<span class="icon">4.3</span>
+									</div>
+									<div class="data">
+										<span class="name">Sajal Kapoor</span>
+										<span class="post">Wedding Photographer</span>
+									</div>
+								</div>
+								<p>From earning 10K a month to being totally booked from November till February.</p>
+							</li>
+							<li class="list">
+								<div class="main_data">
+									<div class="starshape">
+										<span class="icon">4.3</span>
+									</div>
+									<div class="data">
+										<span class="name">Sajal Kapoor</span>
+										<span class="post">Wedding Photographer</span>
+									</div>
+								</div>
+								<p>From earning 10K a month to being totally booked from November till February.</p>
+							</li> -->
+						</ul>
+					</div>
+					<div class="right_section">
+						<div class="review_text">
+							<h4 class="title">Customer Reviews</h4>
+							<span class="caption">See what our customer say about us</span>
+							<p >It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
+							<a href="#0" class="view">View All</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+	<div class="why_choose_us">
+			<div class="container">
+				<div class="section_heading">
+					<h2 class="heading">{{globaldata?.data.whychooseus.page_title}}</h2>
+					<div [innerHTML]="globaldata?.data.whychooseus.page_content"></div>	 
+				 
+				</div>
+			</div>
+			<ul  class="why_jqfcntion">
+				 
+				<li class="list {{experience.sort_order_alpha}}" *ngFor="let experience of globaldata?.data.whychooseus_arr" >
+					<div class="style">
+						<span class="cycle">{{experience.title}} </span>
+						<span class="content">{{experience.description}}</span>  
+					</div>
+				</li>
+ 
+			</ul>
+		</div>
+
+	<div class="container">
+		<div class="grey_set_bg">
+				
+			<div class="left_out_margin">	
+				<div class="download_section">
+					<div class="left_section">
+						<div class="text_part">
+							<h4>Download the App</h4>
+							<span class="text">Choose and book from cleaning services and track them on the <br> go with the fabwasche App</span>
+						</div>
+
+						<div class="input_section">
+							<span class="title">Send a link via SMS to install the app</span>
+							<label><input type="text" name="" class="input_text"></label>
+							<input type="submit" name="" class="submit_button" value="Send App Link">
+						</div>
+
+						<ul class="button">
+							<li class="list"><a href="#0" class="link"><img src="assets/images/icon/apple.png"></a></li>
+							<li class="list"><a href="#0" class="link"><img src="assets/images/icon/playstore.png"></a></li>
+						</ul>
+					<span class="mobile_slider"><img src="assets/images/assets/mobile.png"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!--HIDDEN -->
+			<!-- footer start here -->
+			<div class="footer">
+				<div class="left_part">
+					<div class="data_part">
+						<h4 class="title">Get help for service at <br> your fingertips.</h4>
+						<ul class="data_list">
+							<li class="list"><span class="icon"><img src="assets/images/icon/phone.png"></span><span class="data"> {{ globaldata?.data.phone1}}</span></li>
+							<li class="list"><span class="icon"><img src="assets/images/icon/email.png"></span><span class="data"> {{ globaldata?.data.email_to_display}}</span></li>
+						</ul>
+						<a  (click)="openEnquiryForm()" class="button">Get in touch</a>
+					</div>
+					<ul class="social_media">
+						<li class="list"><a href="https://twitter.com/home?status=www.fabwasche.com" target="blank"><img src="assets/images/icon/social/twitter.jpg"></a></li>
+						<li class="list"><a href="https://www.facebook.com/sharer/sharer.php?u=www.fabwasche.com" target="blank"><img src="assets/images/icon/social/facebook.jpg"></a></li>
+						<li class="list"><a href="https://www.facebook.com/sharer/sharer.php?u=www.fabwasche.com" target="blank"><img src="assets/images/icon/social/dribble.jpg"></a></li>
+						<li class="list"><a href="https://pinterest.com/pin/create/button/?url=sad&media=www.fabwasche.com&description=asd" target="blank"><img src="assets/images/icon/social/pintrest.jpg"></a></li>
+						<li class="list"><a href="https://plus.google.com/share?url=www.fabwasche.com" target="blank"><img src="assets/images/icon/social/google.jpg"></a></li>
+					</ul>
+				</div>
+				<div class="right_part">
+					<h4 class="title">Quick <br> Informations</h4>
+					<ul class="quick_link">
+						<li class="list" *ngFor="let menu of globaldata?.data.menu_items">
+							<a  routerLink="/pages/{{menu.seo_url}}" class="link">{{menu.item_name}}</a>
+						</li>
+						<!-- <li class="list"><a href="#0" class="link">FAQ’s</a></li>
+						<li class="list"><a href="#0" class="link">Career</a></li>
+						<li class="list"><a href="#0" class="link">Privicy Policy</a></li>
+						<li class="list"><a href="#0" class="link">Terms</a></li> -->
+					</ul>
+				</div>
+
+				<div class="bottom_footer">
+					<!-- <span class="copyright"> © 2017 Fabwasche ALL RIGHTS RESERVED</span> -->
+					<span class="copyright"> {{ globaldata?.data.copyright}}</span>
+					<p>Design & developed by Idigitie Pvt. Ltd. </p>
+				</div>
+
+			</div>
+			<!-- footer end here -->
+
+
+	</div>
+	
+	
+	<app-login (is_logged_in)="isLoggedInHandler($event)"></app-login>
+	<app-dry-cleaning (isserviceopen)="isserviceopen($event)" *ngIf="services=='dry-cleaning'"></app-dry-cleaning>
+	<app-home-cleaning (isserviceopen)="isserviceopen($event)" *ngIf="services=='home-cleaning'" ></app-home-cleaning>
+ 
+	<app-enquiry [isenquiry]="isenquiry" *ngIf="isenquiry" (onCloseEnquiry)="onCloseEnquiryHandler($event)"></app-enquiry>
+  
+		

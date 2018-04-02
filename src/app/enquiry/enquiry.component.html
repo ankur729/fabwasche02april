@@ -1,0 +1,59 @@
+<div class="enquiry_popup">
+		<div class="design_box">
+			<span class="close_popup" (click)="closeEnquiryForm()"><i><img src="assets/images/icon/close.png"></i></span>
+
+			<section class="content" id="enquiry_form">
+
+				<div class="section_heading">
+					<h2 class="heading">Get In Touch</h2>
+				</div>
+
+
+				<span class="input input--nao">
+					<input class="input__field input__field--nao" type="text"   [(ngModel)]="name" />
+					<label class="input__label input__label--nao" for="input-1">
+						<span class="input__label-content input__label-content--nao">Your Name</span>
+					</label>
+					<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+						<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+					</svg>
+				</span>
+				<span class="input input--nao">
+					<input class="input__field input__field--nao" type="text" id="input-2" [(ngModel)]="email" />
+					<label class="input__label input__label--nao" for="input-2">
+						<span class="input__label-content input__label-content--nao">Your Email</span>
+					</label>
+					<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+						<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+					</svg>
+				</span>
+				<span class="input input--nao">
+					<select class="input__field input__field--nao select_option" [(ngModel)]="category_id"  id="input-2" >
+						<option value="">--Select Category--</option>
+						<option value="1">Dry Cleaning</option>
+						<option value="2">Home Deep Cleaning</option>
+						<option value="3">Kitchen Cleaning</option>
+						<option value="4">Water Tank Cleaning</option>
+					</select>
+					
+					<label class="input__label input__label--nao" for="input-2">
+						<span class="input__label-content input__label-content--nao">Select Category</span>
+					</label>
+					<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+						<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+					</svg>
+				</span>
+				<span class="input input--nao">
+					<input class="input__field input__field--nao" type="text" id="input-2"  [(ngModel)]="msg" />
+					<label class="input__label input__label--nao" for="input-2">
+						<span class="input__label-content input__label-content--nao">Message</span>
+					</label>
+					<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+						<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+					</svg>
+				</span>
+				<input type="button" (click)="saveEnquiry()" name=""  class="submit_button" value="ENQUIRY NOW">
+			</section>
+
+		</div>
+	</div>

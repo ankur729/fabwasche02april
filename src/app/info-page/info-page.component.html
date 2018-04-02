@@ -1,0 +1,151 @@
+<div class="main_container common_pages">
+
+
+	<!-- header start here -->
+	<div class="header content_pages">
+		<div class="container">
+			<div class="head_design">
+				<div class="coloum_div col-px-200"><span class="customer_care">011 6580 0001</span></div>
+				<div class="coloum_div" routerLink="/"><span class="logo"><img src="{{imgUrl}}{{globaldata?.data.logo_image}}"></span></div>
+				<div class="coloum_div col-px-200" *ngIf="is_logged_in==false" ><span class="login_button" (click)="onLoginRegisterClick()" >Login / Register</span></div>
+				<div class="coloum_div col-px-200" *ngIf="is_logged_in==true">
+					<div class="my_account_drop">
+						<span class="drop_name">Hi, {{loggedInUserData?.name}}</span>
+						<ul class="drop-down">
+							<li class="sub-list" (click)="onClickMyAccount()" style="cursor:pointer"><a  class="sub-link">My Order</a></li>
+							<li class="sub-list" style="cursor:pointer"><a [routerLink]=" ['/my-account/orders']" class="sub-link">My Referral</a></li>
+							<li class="sub-list"  style="cursor:pointer"><a  (click)="logout()" class="sub-link">Logout</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>	
+		</div>
+
+		<div class="main_page_content">
+			<div class="container">
+			<div class="section_heading">
+					<h1 class="heading">{{info_data?.pagedata.page_title}}</h1>
+				 
+              <div [innerHTML]="info_data?.pagedata.page_excerpt"></div>
+    
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- header end here -->
+
+
+	<div class="container">
+		<div class="grey_set_bg">
+			
+			<div class="inner_content">
+          <div [innerHTML]="info_data?.pagedata.page_content"></div>
+				<!-- <h4 class="f-36  center"><b>Our Mission</b></h4>
+				<p style="line-height: 30px; margin-top: 30px;" class="f-14 center">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p> <br><br><br>
+				<h4 class="f-36  center"><b>Our Vision</b></h4>
+				<p style="line-height: 30px; margin-top: 30px;" class="f-14 center">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+				<p style="line-height: 30px; margin-top: 30px;" class="f-14 center">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p> -->
+			</div>
+
+			<!-- footer start here -->
+			<div class="footer">
+				<div class="left_part">
+					<div class="data_part">
+						<h4 class="title">Get help for service at <br> your fingertips.</h4>
+						<ul class="data_list">
+							<li class="list"><span class="icon"><img src="assets/images/icon/phone.png"></span><span class="data"> 011 6580 0001</span></li>
+							<li class="list"><span class="icon"><img src="assets/images/icon/email.png"></span><span class="data"> support@fabwasche.com</span></li>
+						</ul>
+						<a (click)="openEnquiryForm()" class="button">Get in touch</a>
+					</div>
+					<ul class="social_media">
+						<li class="list"><a href="#0"><img src="assets/images/icon/social/twitter.jpg"></a></li>
+						<li class="list"><a href="#0"><img src="assets/images/icon/social/facebook.jpg"></a></li>
+						<li class="list"><a href="#0"><img src="assets/images/icon/social/dribble.jpg"></a></li>
+						<li class="list"><a href="#0"><img src="assets/images/icon/social/pintrest.jpg"></a></li>
+						<li class="list"><a href="#0"><img src="assets/images/icon/social/google.jpg"></a></li>
+					</ul>
+				</div>
+				<div class="right_part">
+					<h4 class="title">Quick <br> Informations</h4>
+					<ul class="quick_link">
+
+							<li class="list" *ngFor="let menu of globaldata?.data.menu_items">
+									<a style="cursor:pointer"   (click)="navigateFooter(menu.seo_url)"  class="link">{{menu.item_name}}</a>
+								</li>
+						<!-- <li class="list"><a href="#0" class="link">About us</a></li>
+						<li class="list"><a href="#0" class="link">FAQ’s</a></li>
+						<li class="list"><a href="#0" class="link">Career</a></li>
+						<li class="list"><a href="#0" class="link">Privicy Policy</a></li>
+						<li class="list"><a href="#0" class="link">Terms</a></li> -->
+					</ul>
+				</div>
+
+				<div class="bottom_footer">
+					<span class="copyright"> © 2017 Fabwasche ALL RIGHTS RESERVED</span>
+					<p>Design & developed by Idigitie Pvt. Ltd. </p>
+				</div>
+
+			</div>
+			<!-- footer end here -->
+
+		</div>
+	</div>
+
+</div>
+
+
+<app-login (is_logged_in)="isLoggedInHandler($event)"></app-login>
+<app-enquiry [isenquiry]="isenquiry" *ngIf="isenquiry" (onCloseEnquiry)="onCloseEnquiryHandler($event)"></app-enquiry>
+<router-outlet></router-outlet>
+<!-- <div class="main_container common_pages">
+
+ 
+  <div class="header">
+    <div class="container">
+      <div class="head_design">
+        <div class="coloum_div col-px-200"><span class="customer_care"></span></div>
+   <div class="coloum_div" style="cursor:pointer"   routerLink="/"><span class="logo"><img src="{{imgUrl}}{{globaldata?.data.logo_image}}"></span></div>
+        <div class="coloum_div col-px-200" *ngIf="is_logged_in==false" ><span class="login_button" >Login / Register</span></div>
+      <div class="coloum_div col-px-200" *ngIf="is_logged_in">
+        <div class="my_account_drop">
+          <span class="drop_name"></span>
+          <ul class="drop-down">
+            <li class="sub-list" (click)="onClickMyAccount()" style="cursor:pointer"><a  class="sub-link">My Order</a></li>
+            <li class="sub-list"><a [routerLink]=" ['./orders']" class="sub-link">My Referral</a></li>
+            <li class="sub-list" ><a href="#" (click)="logout()" class="sub-link">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+      </div>	
+    </div>
+
+    <div class="container">
+      <div class="my_account_header">
+        <div class="coloum_div">
+          <div class="user_profile">
+            
+             
+           
+          </div>
+        </div>
+
+        <div class="coloum_div"><span class="page_name"><img src="assets/images/icon/referral.png"> {{info_data?.pagedata.page_title}}</span></div>
+      </div>
+    </div>
+
+  </div>
+ 
+
+
+  <div class="container">
+    <div class="grey_set_bg">
+      <div [innerHTML]="info_data?.pagedata.page_content"></div>
+     
+  
+
+    </div>
+  </div>
+
+</div> -->

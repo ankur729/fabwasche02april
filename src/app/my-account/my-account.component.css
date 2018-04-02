@@ -1,0 +1,8 @@
+.my_account_header .coloum_div .user_profile .name{
+
+  
+    border: none;
+    text-decoration: none;
+    width: 200px;
+    cursor: pointer
+}

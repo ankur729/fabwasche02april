@@ -1,0 +1,26 @@
+<!-- <span class="label">{{pay_model}}</span>
+              <input name="key"  class="input-box" placeholder="Your Name" type="text"  value="{{pay_model?.key}}"   >
+              <p></p> -->
+
+              
+
+                <form  name="payuForm" id="payuForm" action=" https://test.payu.in/_payment" method="post">
+
+                    <input name="key" id="mkey1"  class="input-box" placeholder="Your Name" type="text" value="{{pay_model.key}}" [(ngModel)]="pay_model.key" >
+                    <input name="hash" class="input-box" placeholder="Your Name" type="text"  value="{{pay_model.hash}}" [(ngModel)]="pay_model.hash" >
+                    <input name="txnid" class="input-box" placeholder="Your Name" type="text"  value="{{pay_model.txnid}}" [(ngModel)]="pay_model.txnid" >
+                    <input name="amount" id="amount" class="input-box" placeholder="Your Name"  value="{{pay_model.amount}}" [(ngModel)]="pay_model.amount" type="text" >
+                    <input name="firstname" class="input-box" placeholder="Your Name" type="text"  value="{{pay_model.firstname}}" [(ngModel)]="pay_model.firstname" >
+                    <input name="email" class="input-box" placeholder="Your Name" type="text"  value="{{pay_model.email}}" [(ngModel)]="pay_model.email" >
+                    <input name="phone" class="input-box" placeholder="Your Name" type="text" value="{{pay_model.phone}}" [(ngModel)]="pay_model.phone" >
+                    <input name="productinfo" class="input-box" placeholder="Your Name" type="text"  value="{{pay_model.productinfo}}" [(ngModel)]="pay_model.productinfo" >
+                    <input name="surl" class="input-box" placeholder="Your Name" type="text"  value="{{pay_model.surl}}" [(ngModel)]="pay_model.surl" >
+                    <input name="furl" class="input-box" placeholder="Your Name" type="text"  value="{{pay_model.furl}}" [(ngModel)]="pay_model.furl" >
+                    <input name="service_provider" size="64" class="input-box" placeholder="Your Name" type="text"  value="{{pay_model.service_provider}}" [(ngModel)]="pay_model.service_provider" >
+                   
+                </form>
+
+          
+
+
+          

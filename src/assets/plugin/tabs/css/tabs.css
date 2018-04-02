@@ -1,0 +1,5 @@
+﻿.seaTabs_tab {float: left; cursor: pointer; padding: 10px 20px;font-size: 13px;color: #333;}
+.seaTabs_item {padding: 20px; width: 100%; float: left; display: none; }
+.seaTabs_switch_active {color: #fff;background:#c41919; cursor: default; }
+.seaTabs_switch { overflow: hidden;}
+.seaTabs_content_active { display: block; }

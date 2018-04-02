@@ -1,0 +1,646 @@
+ 
+
+	
+	<!-- all_catpopup start here -->
+	<div class="login_popup" >
+		<div class="design_box">
+			<span class="close_popup" (click)="closeLoginRegisterPopup()"><i><img src="assets/images/icon/close.png"></i></span>
+
+			<div class="left_panel" *ngIf="login_panel">
+				<div class="section_heading">
+					<h2 class="heading">Login Customer</h2>
+				</div>
+
+				<div class="form_data">
+					<div class="center_align">
+						<section class="content" id="login_form">
+								<span class="success_alert" *ngIf="succ_login" >
+										{{succ_msg_login}}
+										<!-- verification link will be sent on your email -->
+									</span>
+									<span class="err_login" *ngIf="err_login">
+											{{err_msg_login}}
+											<!-- verification link will be sent on your email -->
+										</span>
+							<span class="input input--nao">
+								<input class="input__field input__field--nao" type="text" id="input-1" [(ngModel)]="login.mobile_email" />
+								<label class="input__label input__label--nao" for="input-1">
+									<span class="input__label-content input__label-content--nao">Email / Mobile</span>
+								</label>
+								<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+									<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+								</svg>
+							</span>
+							<span class="input input--nao">
+								<input class="input__field input__field--nao" type="password" id="input-2" [(ngModel)]="login.password"  />
+								<label class="input__label input__label--nao" for="input-2" >
+									<span class="input__label-content input__label-content--nao">Password</span>
+								</label>
+								<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+									<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+								</svg>
+							</span>
+							<div class="other_button">
+								<div class="left_button" (click)="onChangePanelToForgot()" style="cursor:pointer"><a class="change_button">Can’t Log in ?</a></div>
+								<div class="right_button"><input type="submit" class="blue_button" value="LOG IN" (click)="onLogin()"></div>
+							</div>
+
+							
+						</section>
+					</div>
+				</div>
+				<ul class="social_login">
+						<li class="list" style="display:none"><a href="#0" class="link"><img src="assets/images/icon/facebook.png"></a></li>
+						<li class="list" (click)="signInWithGoogle()"><a href="#" class="link"><img src="assets/images/icon/google.png"></a></li>
+					</ul>
+				<div class="terms_short">
+					<h4 class="title">Fabwashe Terms !</h4>
+					<p>It is a long established fact that a distracted reader will be distracted by the readable. <a href="#0" class="more">More</a></p>
+				</div>
+
+			</div>
+
+			<div class="left_panel" *ngIf="forgot_panel">
+					<div class="section_heading">
+						<h2 class="heading">Password Recover</h2>
+					</div>
+	
+					<div class="form_data">
+						<div class="center_align">
+							<section class="content" id="login_form">
+
+									<span class="err_login" *ngIf="err_forgot">
+											{{err_msg_forgot}}
+											<!-- verification link will be sent on your email -->
+										</span>
+								<span class="input input--nao">
+									<input class="input__field input__field--nao" type="text" id="input-1" [(ngModel)]="register.mobile_email" />
+									<label class="input__label input__label--nao" for="input-1">
+										<span class="input__label-content input__label-content--nao">Email / Mobile</span>
+									</label>
+									<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+										<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+									</svg>
+								</span>
+								<div class="other_button">
+									<div class="left_button" (click)="onChangePanelToLogin()" style="cursor:pointer"><a  class="change_button"> <img src="assets/images/icon/back.png"> Back to Login</a></div>
+									<div class="right_button"><input type="submit" class="blue_button" value="NEXT" (click)="onForgot()"></div>
+								</div>
+							</section>
+						</div>
+					</div>
+	
+					<div class="terms_short">
+						<h4 class="title">Fabwashe Terms !</h4>
+						<p>It is a long established fact that a distracted reader will be distracted by the readable. <a href="#0" class="more">More</a></p>
+					</div>
+	
+				</div>
+
+				<div class="left_panel" *ngIf="recovery_otp_panel">
+						<div class="section_heading">
+							<h2 class="heading">Recover With Mobile</h2>
+						</div>
+		
+						<div class="form_data">
+							<div class="center_align">
+									<span class="err_login" *ngIf="err_forgot">
+											{{err_msg_forgot}}
+											<!-- verification link will be sent on your email -->
+										</span>
+								<div class="trigger_alert">
+									<span class="title">An OTP has been	 sent on</span> 
+									<span class="value">{{register.mobile_email}}</span>
+								</div>
+								<section class="content" id="login_form_forgot">
+									<span class="input input--nao">
+									<a style="cursor:pointer" (click)="onResendForgotOTP()" class="resend_btn">Resend</a>
+										<input class="input__field input__field--nao" type="text" id="input-1" [(ngModel)]="register.mobile_email_otp" />
+										<label class="input__label input__label--nao" for="input-1">
+											<span class="input__label-content input__label-content--nao">Enter OTP Code</span>
+										</label>
+										<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+											<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+										</svg>
+									</span>
+									<div class="other_button">
+										<div class="left_button" (click)="onChangePanelToForgotPanel()" ><a  class="change_button"> <img src="assets/images/icon/back.png">Go Back</a></div>
+										<div class="right_button" (click)="validateRecoverOTP()"><input type="submit" class="blue_button" value="NEXT" ></div>
+									</div>
+								</section>
+							</div>
+						</div>
+		
+						<div class="terms_short">
+							<h4 class="title">Fabwashe Terms !</h4>
+							<p>It is a long established fact that a distracted reader will be distracted by the readable. <a href="#0" class="more">More</a></p>
+						</div>
+		
+					</div>
+
+				<div class="left_panel" *ngIf="create_pass_panel">
+						<div class="section_heading">
+							<h2 class="heading">Create Password</h2>
+						</div>
+		
+						<div class="form_data">
+							<div class="center_align">
+								<section class="content" id="login_form">
+
+										<span class="err_login" *ngIf="err_forgot">
+												{{err_msg_forgot}}
+												<!-- verification link will be sent on your email -->
+											</span>
+									<span class="input input--nao">
+										<input class="input__field input__field--nao" type="password" id="input-1"  [(ngModel)]="register.password" />
+										<label class="input__label input__label--nao" for="input-1">
+											<span class="input__label-content input__label-content--nao">New Password</span>
+										</label>
+										<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+											<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+										</svg>
+									</span>
+									<span class="input input--nao">
+										<input class="input__field input__field--nao" type="password" id="input-2" [(ngModel)]="register.confirm_password" />
+										<label class="input__label input__label--nao" for="input-2">
+											<span class="input__label-content input__label-content--nao">Confirm Password</span>
+										</label>
+										<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+											<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+										</svg>
+									</span>
+									<div class="other_button">
+										<div class="left_button" (click)="onChangePanelToLogin()" style="cursor:pointer"><a  class="change_button"> <img src="assets/images/icon/back.png"> Back to Login</a></div>
+										<div class="right_button"><input type="submit" class="blue_button" value="CREATE" (click)="onForgotUpdate()"></div>
+									</div>
+								</section>
+							</div>
+						</div>
+		
+						<div class="terms_short">
+							<h4 class="title">Fabwashe Terms !</h4>
+							<p>It is a long established fact that a distracted reader will be distracted by the readable. <a href="#0" class="more">More</a></p>
+						</div>
+		
+					</div>
+
+			<div class="right_panel">
+				<div class="set_design">
+					<div class="section_heading">
+						<h2 class="heading">New Customer ? </h2>
+						<p class="caption">Don’t worry if you are a new customer of fabwasche just choose your register type</p>
+					</div>
+
+					<div class="bottom_part">
+						
+						<section id="register_form" *ngIf="reg_step=='1'">
+
+								<span class="success_alert" *ngIf="succ" >
+										{{succ_msg}}
+										<!-- verification link will be sent on your email -->
+									</span>
+								<span class="email_verfiy_alert" *ngIf="err">
+										{{err_msg}}
+										<!-- verification link will be sent on your email -->
+									</span>
+							<span class="input input--nao">
+								<input class="input__field input__field--nao" type="text" id="input-1" [(ngModel)]="register.name" />
+								<label class="input__label input__label--nao" for="input-1">
+									<span class="input__label-content input__label-content--nao">Full Name</span>
+								</label>
+								<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+									<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+								</svg>
+							</span>
+							<div class="other_button">
+								<div class="left_button"><input type="button" class="blue_button" value="ENTER" (click)="onRegister('1')"></div>
+							</div>
+						</section>
+
+
+						<section id="register_form" *ngIf="reg_step=='2'">
+								<span class="email_verfiy_alert" *ngIf="err">
+									{{err_msg}}
+									<!-- verification link will be sent on your email -->
+								</span>
+							<span class="input input--nao">
+								<input class="input__field input__field--nao" type="text" id="input-1" [(ngModel)]="register.mobile_email" />
+								<label class="input__label input__label--nao" for="input-1">
+									<span class="input__label-content input__label-content--nao">Email / Mobile</span>
+								</label>
+								<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+									<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+								</svg>
+							</span>
+							<div class="other_button">
+								<div class="left_button" (click)="onBack('2')" style="cursor:pointer"><a   class="change_button"> <img src="assets/images/icon/back.png">Go Back</a></div>
+								<div class="right_button"><input type="submit" class="blue_button right" value="CONTINUE" (click)="onRegister('2')"></div>
+							</div>
+						</section>
+
+
+						<section id="register_form" *ngIf="reg_step=='3'">
+
+								<span class="email_verfiy_alert" *ngIf="err">
+										{{err_msg}}
+										<!-- verification link will be sent on your email -->
+									</span>
+								<div class="trigger_alert">
+									<span class="title">An OTP has been sent on</span> 
+									<span class="value">{{register.mobile_email}}</span>
+								</div>
+								<span class="input input--nao">
+									<a  style="cursor:pointer" (click)="onResendOTP()" class="resend_btn">Resend</a>
+									<input class="input__field input__field--nao" type="text" id="input-1"   [(ngModel)]="register.mobile_email_otp"/>
+									<label class="input__label input__label--nao" for="input-1">
+										<span class="input__label-content input__label-content--nao">Enter OTP</span>
+									</label>
+									<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+										<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+									</svg>
+								</span>
+								<div class="other_button">
+									<div class="left_button" (click)="onBack('3')" style="cursor:pointer"><a class="change_button"> <img src="assets/images/icon/back.png">Go Back</a></div>
+									<div class="right_button"><input type="submit" class="blue_button right" value="CONTINUE" (click)="onRegister('3')"></div>
+								</div>
+							</section>
+
+
+							<section id="register_form" *ngIf="reg_step=='4'">
+
+									<span class="email_verfiy_alert" *ngIf="err">
+											{{err_msg}}
+											<!-- verification link will be sent on your email -->
+										</span>
+									<span class="input input--nao">
+										<a   (click)="onSkip()" style="cursor:pointer" class="skip_btn">skip</a>
+										<input class="input__field input__field--nao" type="text" id="input-1"  [(ngModel)]="register.refcode" />
+										<label class="input__label input__label--nao" for="input-1">
+											<span class="input__label-content input__label-content--nao">Enter Referral Code</span>
+										</label>
+										<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+											<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+										</svg>
+									</span>
+									<div class="other_button">
+										<div class="left_button"><a  (click)="onBack('4')" style="cursor:pointer" class="change_button"> <img src="assets/images/icon/back.png">Go Back</a></div>
+										<div class="right_button"><input type="submit" class="blue_button right" value="CONTINUE" (click)="onRegister('4')"></div>
+									</div>
+						 </section>
+
+						 <section id="register_form" *ngIf="reg_step=='5'">
+
+								<span class="email_verfiy_alert" *ngIf="err">
+										{{err_msg}}
+										<!-- verification link will be sent on your email -->
+									</span>
+								<span class="input input--nao">
+									<input class="input__field input__field--nao" type="password" id="input-22"  [(ngModel)]="register.password" />
+									<label class="input__label input__label--nao" for="input-22">
+										<span class="input__label-content input__label-content--nao">Create Password</span>
+									</label>
+									<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+										<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+									</svg>
+								</span>
+								<span class="input input--nao">
+									<input class="input__field input__field--nao" type="password" id="input-11"  [(ngModel)]="register.confirm_password"/>
+									<label class="input__label input__label--nao" for="input-11">
+										<span class="input__label-content input__label-content--nao">Confirm Password</span>
+									</label>
+									<svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none" >
+										<path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"/>
+									</svg>
+								</span>
+								<div class="other_button">
+									<div class="left_button"><a  (click)="onBack('5')"  style="cursor:pointer"  class="change_button"> <img src="assets/images/icon/back.png">Go Back</a></div>
+									<div class="right_button"><input type="submit" class="blue_button right" value="CONTINUE"  (click)="onRegister('5')"></div>
+								</div>
+							</section>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- all_catpopup end here -->
+
+	<!-- location header start here-->
+	<div class="location_header" style="display:none">
+		<div class="location_design">
+			<div class="container">
+				<span class="logo">
+					<img src="assets/images/logo.png">
+					<h4 class="caption">Cleaning services at your door on demand</h4>
+				</span>
+				<div class="location_div">
+					<div class="search_div">
+						<input type="text" name="" placeholder="Type your city (e.g Delhi, Pune, Mumbai)" class="search_bar">
+					</div>
+					<div class="cl_div"><span class="button">Detect</span></div>
+				</div>
+				<div class="latest_location">
+					<h4 class="title">Or select your city</h4>
+					<ul class="choose_location">
+						<li class="list">
+							<a href="#0" class="link"><div class="box"><span class="icon"><img src="assets/images/icon/location/delhi.png"></span><span class="name">Delhi</span></div></a>
+						</li>
+						<li class="list">
+							<a href="#0" class="link"><div class="box"><span class="icon"><img src="assets/images/icon/location/delhi.png"></span><span class="name">Bengaluru</span></div></a>
+						</li>
+						<li class="list">
+							<a href="#0" class="link"><div class="box"><span class="icon"><img src="assets/images/icon/location/delhi.png"></span><span class="name">Hyderabad</span></div></a>
+						</li>
+						<li class="list">
+							<a href="#0" class="link"><div class="box"><span class="icon"><img src="assets/images/icon/location/delhi.png"></span><span class="name">Kolkata</span></div></a>
+						</li>
+						<li class="list">
+							<a href="#0" class="link"><div class="box"><span class="icon"><img src="assets/images/icon/location/delhi.png"></span><span class="name">Mumbai</span></div></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- location header end here-->
+
+	<!-- header start here -->
+	<div class="header" style="display:none">
+		<div class="container">
+			<div class="head_design">
+				<div class="coloum_div col-px-200"><span class="location">Delhi<i class="icon"><img src="assets/images/icon/reload.png"></i></span></div>
+				<div class="coloum_div"><span class="logo"><img src="assets/images/logo.png"></span></div>
+				<div class="coloum_div col-px-200"><span class="login_button">Login / Register</span></div>
+			</div>	
+		</div>
+	</div>
+	<!-- header end here -->
+
+	<!-- cat_section start here -->
+	<div class="cat_section" style="display:none">
+		<div class="container">
+
+			<div class="left_out_margin">	
+				<div class="usp_steps">
+					<ul class="steps">
+						<li class="list">
+							<span class="icon"> <i class="thumb"><img src="assets/images/assets/step_1.png"></i> </span>
+							<div class="data">
+								<span class="title">Choose your problem</span>
+								<span class="caption">Select category from services</span>
+							</div>
+						</li>
+						<li class="list">
+							<span class="icon"> <i class="thumb"><img src="assets/images/assets/step_2.png"></i> </span>
+							<div class="data">
+								<span class="title">Choose your problem</span>
+								<span class="caption">Select category from services</span>
+							</div>
+						</li>
+						<li class="list">
+							<span class="icon"> <i class="thumb"><img src="assets/images/assets/step_3.png"></i> </span>
+							<div class="data">
+								<span class="title">Choose your problem</span>
+								<span class="caption">Select category from services</span>
+							</div>
+						</li>
+					</ul>
+					<ul class="services">
+						<li class="list"><a href="#0" class="link"><span class="name">Kitchen Cleaning</span><img src="assets/images/assets/kitchen_clean.jpg"></a></li>
+						<li class="list"><a href="#0" class="link"><span class="name">Dry Cleaning</span><img src="assets/images/assets/dry_clean.jpg"></a></li>
+						<li class="list"><a href="#0" class="link"><span class="name">Fabric washing</span><img src="assets/images/assets/fab_clean.jpg"></a></li>
+						<li class="list"><a href="#0" class="link"><span class="name">Home Deep Cleaning</span><img src="assets/images/assets/home_clean.jpg"></a></li>
+						<li class="list"><a href="#0" class="link"><span class="name">Water Tank Cleaning</span><img src="assets/images/assets/water_tank.jpg"></a></li>
+						<li class="list"><a href="#0" class="link"><span class="name">Sofa Cleaning</span><img src="assets/images/assets/sofa_clean.jpg"></a></li>
+						<li class="list"><a href="#0" class="link"><span class="name">Bathroom deep Cleaning</span><img src="assets/images/assets/bathroom_clean.jpg"></a></li>
+						<li class="list"><a href="#0" class="link view_all"> <span class="">View all</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- cat_section end here -->
+
+	<div class="container" style="display:none">
+		<div class="grey_set_bg">
+			<div class="our_capaciies">
+				<h2 class="heading">Our Capabilities</h2>
+				<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<br><br>
+
+				 Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. </p>
+			</div>
+
+			<div class="right_out_margin">
+				<div class="customer_reviews">
+					<div class="left_section">
+						<ul class="review_slider">
+							<li class="list">
+								<div class="main_data">
+									<div class="starshape">
+										<span class="icon">4.3</span>
+									</div>
+									<div class="data">
+										<span class="name">Sajal Kapoor</span>
+										<span class="post">Wedding Photographer</span>
+									</div>
+								</div>
+								<p>From earning 10K a month to being totally booked from November till February.</p>
+							</li>
+							<li class="list">
+								<div class="main_data">
+									<div class="starshape">
+										<span class="icon">4.3</span>
+									</div>
+									<div class="data">
+										<span class="name">Sajal Kapoor</span>
+										<span class="post">Wedding Photographer</span>
+									</div>
+								</div>
+								<p>From earning 10K a month to being totally booked from November till February.</p>
+							</li>
+							<li class="list">
+								<div class="main_data">
+									<div class="starshape">
+										<span class="icon">4.3</span>
+									</div>
+									<div class="data">
+										<span class="name">Sajal Kapoor</span>
+										<span class="post">Wedding Photographer</span>
+									</div>
+								</div>
+								<p>From earning 10K a month to being totally booked from November till February.</p>
+							</li>
+							<li class="list">
+								<div class="main_data">
+									<div class="starshape">
+										<span class="icon">4.3</span>
+									</div>
+									<div class="data">
+										<span class="name">Sajal Kapoor</span>
+										<span class="post">Wedding Photographer</span>
+									</div>
+								</div>
+								<p>From earning 10K a month to being totally booked from November till February.</p>
+							</li>
+						</ul>
+					</div>
+					<div class="right_section">
+						<div class="review_text">
+							<h4 class="title">Customer Reviews</h4>
+							<span class="caption">See what our customer say about us</span>
+							<p >It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
+							<a href="#0" class="view">View All</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="why_choose_us" style="display:none">
+		<div class="container">
+			<div class="section_heading">
+				<h2 class="heading">Why Choose Us</h2>
+				<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,</p>
+
+			</div>
+		</div>
+		<img src="assets/images/assets/why_us.jpg" width="100%;">
+	</div>
+
+	<div class="container" style="display:none">
+		<div class="grey_set_bg">
+				
+			<div class="left_out_margin">	
+				<div class="download_section">
+					<div class="left_section">
+						<div class="text_part">
+							<h4>Download the App</h4>
+							<span class="text">Choose and book from cleaning services and track them on the <br> go with the fabwasche App</span>
+						</div>
+
+						<div class="input_section">
+							<span class="title">Send a link via SMS to install the app</span>
+							<label><input type="text" name="" class="input_text"></label>
+							<input type="submit" name="" class="submit_button" value="Send App Link">
+						</div>
+
+						<ul class="button">
+							<li class="list"><a href="#0" class="link"><img src="assets/images/icon/apple.png"></a></li>
+							<li class="list"><a href="#0" class="link"><img src="assets/images/icon/playstore.png"></a></li>
+						</ul>
+					<span class="mobile_slider"><img src="assets/images/assets/mobile.png"></span>
+					</div>
+				</div>
+			</div>
+
+			<!-- footer start here -->
+			<div class="footer">
+				<div class="left_part">
+					<div class="data_part">
+						<h4 class="title">Get help for service at <br> your fingertips.</h4>
+						<ul class="data_list">
+							<li class="list"><span class="icon"><img src="assets/images/icon/phone.png"></span><span class="data"> 011 6580 0001</span></li>
+							<li class="list"><span class="icon"><img src="assets/images/icon/email.png"></span><span class="data"> support@fabwasche.com</span></li>
+						</ul>
+						<a href="#0" class="button">Get in touch</a>
+					</div>
+					<ul class="social_media">
+						<li class="list"><a href="#0"><img src="assets/images/icon/social/twitter.jpg"></a></li>
+						<li class="list"><a href="#0"><img src="assets/images/icon/social/facebook.jpg"></a></li>
+						<li class="list"><a href="#0"><img src="assets/images/icon/social/dribble.jpg"></a></li>
+						<li class="list"><a href="#0"><img src="assets/images/icon/social/pintrest.jpg"></a></li>
+						<li class="list"><a href="#0"><img src="assets/images/icon/social/google.jpg"></a></li>
+					</ul>
+				</div>
+				<div class="right_part">
+					<h4 class="title">Quick <br> Informations</h4>
+					<ul class="quick_link">
+						<li class="list"><a href="#0" class="link">About us</a></li>
+						<li class="list"><a href="#0" class="link">FAQ’s</a></li>
+						<li class="list"><a href="#0" class="link">Career</a></li>
+						<li class="list"><a href="#0" class="link">Privicy Policy</a></li>
+						<li class="list"><a href="#0" class="link">Terms</a></li>
+					</ul>
+				</div>
+
+				<div class="bottom_footer">
+					<span class="copyright"> © 2017 Fabwasche ALL RIGHTS RESERVED</span>
+					<p>Design & developed by Idigitie Pvt. Ltd. </p>
+				</div>
+
+			</div>
+			<!-- footer end here -->
+
+		</div>
+	</div>
+
+ 
+<!-- <script src="plugin/owl/js/owl.carousel.js"></script> -->
+<script src="assets/plugin/input/js/classie.js"></script>
+<script>
+
+​$("a").click(function(e) {
+	e.preventDefault();
+});
+
+  $(".review_slider").owlCarousel({
+    items : 1,
+    slideSpeed : 2000,
+	paginationSpeed : 2000,
+	autoPlay : 5000,
+	singleItem:true,
+	autoplayTimeout:2500,    
+	responsive: true,
+	responsiveRefreshRate : 200,
+	responsiveBaseWidth: window,
+  });
+
+  $(".").click(function(){
+    $('.login_popup').css("display","block");
+  
+  })
+  
+
+(function() {
+	// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+	if (!String.prototype.trim) {
+		(function() {
+			// Make sure we trim BOM and NBSP
+			var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+			String.prototype.trim = function() {
+				return this.replace(rtrim, '');
+			};
+		})();
+	}
+
+	[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+		// in case the input is already filled..
+		if( inputEl.value.trim() !== '' ) {
+			classie.add( inputEl.parentNode, 'input--filled' );
+		}
+
+		// events:
+		inputEl.addEventListener( 'focus', onInputFocus );
+		inputEl.addEventListener( 'blur', onInputBlur );
+	} );
+
+	function onInputFocus( ev ) {
+		classie.add( ev.target.parentNode, 'input--filled' );
+
+	}
+
+	function onInputBlur( ev ) {
+		if( ev.target.value.trim() === '' ) {
+			classie.remove( ev.target.parentNode, 'input--filled' );
+		}
+  }
+  
+
+ 
+ 
+})();
+
+</script>
+ 
